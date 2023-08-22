@@ -13,15 +13,17 @@
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+	<div class="title">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li>projets</li>
+				<li>contact</li>
+				<li>login</li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram" class="instagram"></li>
+			</ul>
+		</nav>
+	</div>
 </header>
 <main>
 	<section id="introduction">
@@ -30,13 +32,19 @@
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+			<p>Je raconte votre histoire, je valorise vos idées. Je vous <br> accompagne de la conception à la livraison finale du<br> chantier.</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre<br> en valeur les volumes, les matières et les couleurs dans le<br> respect de l’esprit des lieux et le choix adapté des<br> matériaux. Le suivi du chantier sera assuré dans le souci<br> du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut-être<br> constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes projets</h2>
+		<div class="projets-btn">
+			<button class="Tous_btn selected">Tous</button>
+			<button class="Objets_btn">Objets</button>
+			<button class="Appartements_btn">Appartements</button>
+			<button class="Hôtels-restaurants_btn">Hôtels & restaurants</button>
+		</div>
 		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
