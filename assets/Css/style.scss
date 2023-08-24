@@ -63,6 +63,7 @@ header {
 		background-color: black;
 		button, input {
 			height: 38px;
+			cursor: pointer;
 		}
 		button {
 			background-color: black;
@@ -73,6 +74,9 @@ header {
 			border-radius: 60px;
 			text-align: center;
 		}
+	}
+	a {
+		text-decoration: none;
 	}
 	.title{
 	display: flex;
@@ -115,7 +119,7 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	cursor: pointer;
 }
 nav li {
 	padding: 0 10px;
@@ -126,16 +130,182 @@ li:hover {
 	color: #B1663C;
 }
 
+input{
+	padding: 0px 30px;
+  	box-sizing: border-box;
+}
+
+textarea{
+	padding: 10px 15px;
+	box-sizing: border-box;
+}
+
+/* Modal */
+
+.modal-container {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9;
+	.tri-photos{
+		padding: 46px 0px;
+		border-bottom: 1px solid #B3B3B3;
+	}
+	a {
+		font-family: 'Syne';
+		text-decoration: none;
+		color: #D65353;
+	}
+}
+
+.modal-container-ajout {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9;
+	.row-modal{
+		padding: 8px 10px;
+		border: none;
+		font-size: 24px;
+		background-color: #FFFEF8;
+		position: absolute;
+		top: -3px;
+		left: 24px;
+		cursor: pointer;
+	}
+	.ajout-photo {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 169px;
+		width: 420px;
+		background-color: #E8F1F6;
+		margin-top: 36px;
+	}
+	img {
+		margin-top: 22px;
+		font-size: 58px;
+	}
+	#ajouterPhotoBtn {
+		background-color: #CBD6DC;
+		color: #306685;
+		height: 36px;
+		width: 173px;
+		font-size: 14px;
+		border: none;
+		border-radius: 50px;
+		cursor: pointer;
+	}
+	#ajouterPhotoBtn:hover {
+		background-color: #0056b3;
+	}
+	p {
+		font-size: 10px;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 21px;
+		text-align: left;
+		margin-top:30px;
+		border-bottom: 1px solid #B3B3B3;
+		padding-bottom: 46px;
+	}
+	.input-photo {
+		width: 420px;
+		height: 51px;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+		border: none;
+	}
+	label{
+		font-family: 'Work Sans';
+		font-size: 14px;
+		font-weight: 500;
+	}
+	
+}
+
+.overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	opacity: 30%;
+}
+.modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 630px;
+	height: 670px;
+	max-width: 500px;
+	min-width: 300px;
+	padding: 30px;
+	background: #FFFEF8;
+	border-radius: 10px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	h3 {
+		font-size: 26px;
+		font-weight: 400;
+		margin-top: 60px;
+	}
+	.input-modal {
+		width: 236px;
+		height: 36px;
+		margin-bottom: 23px;
+		margin-top: 38px;
+	}
+}
+
+.close-modal {
+	padding: 8px 10px;
+	border: none;
+	font-size: 24px;
+	background-color: #FFFEF8;
+	position: absolute;
+	top: 14px;
+	right: 24px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+/* header */
+
 .instagram {
 	width: 17px;
+	cursor: pointer;
 }
+
+/* section introduction*/
 
 #introduction {
 	display: flex;
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	button {
+		position: relative;
+		z-index: -1;
+		left: 50px;
+		top: 10px;
+		display: inline-flex;
+		gap: 10px;
+		background-color: #FFFEF8;
+		width: 84px;
+		border: none;
+		font-size: 15px;
+		color: #1D6154;
+		cursor: pointer;
+	}
 }
 #introduction img {
 	display: block;
@@ -155,6 +325,9 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/* portfolio */
+
 #portfolio {
 	h2 {
 	text-align: center;
@@ -167,6 +340,7 @@ li:hover {
 		margin: 51px;
 		justify-content: center;
 		button {
+			display: block;
 			font-family: 'Syne';
 			font-weight: 700;
 			height: 37px;
@@ -201,6 +375,7 @@ li:hover {
 			border: none;
 			font-size: 15px;
 			color: #1D6154;
+			cursor: pointer;
 		}
 	}
 }
@@ -217,6 +392,9 @@ li:hover {
 	width: 100%;
 
 }
+
+/* Contacts */
+
 #contact {
 	display: flex;
 	flex-direction: column;
@@ -267,7 +445,10 @@ input[type="submit"]{
 	margin : 2em auto ;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
+
+/* Footer */
 
 footer {
 	nav ul {
