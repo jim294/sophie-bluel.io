@@ -48,7 +48,6 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1440px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -143,11 +142,12 @@ textarea{
 /* Modal */
 
 .modal-container {
+	visibility: hidden;
 	position: fixed;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 9;
+	transition: visibility 0.4s;
 	.tri-photos{
 		padding: 46px 0px;
 		border-bottom: 1px solid #B3B3B3;
@@ -158,13 +158,27 @@ textarea{
 		color: #D65353;
 	}
 }
+.modal-container.active{
+	visibility: visible;
+	.overlay{
+		opacity: 30%;
+		transition: opacity 0.4s ease-out;
+	}
+	.modal {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+		transition: opacity 0.4s 0.2s ease-out,
+		transform 0.4s 0.2s ease-out;
+	}
+}
 
 .modal-container-ajout {
+	visibility: hidden;
 	position: fixed;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 9;
+	transition: visibility 0.4s;
 	.row-modal{
 		padding: 8px 10px;
 		border: none;
@@ -226,15 +240,30 @@ textarea{
 	}
 	
 }
+.modal-container-ajout.active{
+	visibility: visible;
+	.overlay{
+		opacity: 30%;
+		transition: opacity 0.4s ease-out;
+	}
+	.modal {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+		transition: opacity 0.4s 0.2s ease-out,
+		transform 0.4s 0.2s ease-out;
+	}
+}
 
 .overlay {
+	opacity: 0;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background: #000000;
-	opacity: 30%;
+	transition: opacity 0.4s 0.2s ease-out;
 }
 .modal {
+	opacity: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -248,7 +277,9 @@ textarea{
 	position: absolute;
 	top: 40%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, calc(-50% - 50px));
+	transition: opacity 0.4s ease-out,
+	transform 0.4s ease-out;
 	h3 {
 		font-size: 26px;
 		font-weight: 400;
@@ -294,7 +325,7 @@ textarea{
 	align-items: start;
 	button {
 		position: relative;
-		z-index: -1;
+		
 		left: 50px;
 		top: 10px;
 		display: inline-flex;

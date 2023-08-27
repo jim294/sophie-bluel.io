@@ -1,5 +1,4 @@
-const reponse = await fetch('http://localhost:5678/api/works');
-const elements = await reponse.json();
+const elements = await getAllWorks();
 
 function init(elements) {
     

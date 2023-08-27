@@ -1,5 +1,4 @@
-const reponse = await fetch('http://localhost:5678/api/works');
-const works = await reponse.json();
+const elements = await getAllWorks();
 
 async function init(works) {
     
@@ -46,11 +45,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+const ajouterPhotoBtn = document.getElementById("ajouterPhotoBtn");
+const inputPhoto = document.getElementById("inputPhoto");
+
+ajouterPhotoBtn.addEventListener("click", function() {
+    inputPhoto.click();
+});
+
 inputPhoto.addEventListener("change", function(event) {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-        // Vous pouvez ajouter ici le code pour traiter le fichier sélectionné
-        alert("Fichier sélectionné : " + selectedFile.name);
+        const imageURL = URL.createObjectURL(selectedFile); // Créer une URL locale pour le fichier
+        // Créer un élément d'image pour afficher la photo sélectionnée
+        const imageElement = document.createElement("img");
+        imageElement.src = imageURL;
+        imageElement.classList.add("uploaded-image"); // Ajouter une classe pour le style CSS si nécessaire
+        
+        // Ajouter l'élément d'image à l'endroit approprié dans votre page
+        const ajoutPhotoDiv = document.querySelector(".ajout-photo");
+        ajoutPhotoDiv.appendChild(imageElement);
     }
 });
 
@@ -65,3 +78,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+const modalContainer = document.querySelector(".modal-container");
+const modalContainerAjout = document.querySelector(".modal-container-ajout");
+const modalTriggers = document.querySelectorAll(".modal-trigger");
+const modalTriggersAjout = document.querySelectorAll(".modal-trigger-ajout")
+
+modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
+
+function toggleModal() {
+    modalContainer.classList.toggle("active")
+}
+
+modalTriggersAjout.forEach(triggerAjout => triggerAjout.addEventListener("click", toggleModalAjout))
+
+async function toggleModalAjout() {
+    modalContainer.classList.remove("active");
+    modalContainerAjout.classList.toggle("active")
+}
