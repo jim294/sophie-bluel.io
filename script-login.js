@@ -11,7 +11,7 @@ await cursor()
 
 document.addEventListener("DOMContentLoaded", function () {
     const loginButton = document.querySelector("input[type='submit']");
-    loginButton.addEventListener("click", login);
+    loginButton.addEventListener("click", loginUser);
 });
 
 async function login() {
@@ -19,8 +19,8 @@ async function login() {
     const password = document.querySelector(".login-password").value;
 
     const loginData = {
-        "email": email,
-        "password": password
+        "email": "email",
+        "password": "password"
     };
     await loginUser(loginData)
     await cursor()
