@@ -61,7 +61,7 @@ body {
 }
 
 header .edition {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   height: 59px;
@@ -88,6 +88,9 @@ header .title {
   justify-content: space-between;
   margin: 50px 0;
   padding: 0px 150px;
+}
+header .title .logout-btn {
+  display: none;
 }
 
 main {
@@ -158,11 +161,29 @@ textarea {
 .modal-container .tri-photos {
   padding: 46px 0px;
   border-bottom: 1px solid #B3B3B3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
 }
-.modal-container a {
+.modal-container .tri-photos img {
+  height: 100px;
+}
+.modal-container .tri-photos p {
+  font-size: 14px;
+}
+.modal-container .tri-photos i {
+  position: absolute;
+  left: 55px;
+  bottom: 94px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+.modal-container .supprimer-photos {
   font-family: "Syne";
   text-decoration: none;
   color: #D65353;
+  cursor: pointer;
 }
 
 .modal-container.active {
@@ -196,7 +217,7 @@ textarea {
   left: 24px;
   cursor: pointer;
 }
-.modal-container-ajout .ajout-photo {
+.modal-container-ajout .ajout-photo-before {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,6 +225,12 @@ textarea {
   width: 420px;
   background-color: #E8F1F6;
   margin-top: 36px;
+}
+.modal-container-ajout .ajout-photo-after {
+  display: none;
+}
+.modal-container-ajout .ajout-photo-after img {
+  height: 169px;
 }
 .modal-container-ajout img {
   margin-top: 22px;
@@ -326,13 +353,13 @@ textarea {
   flex: 1;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   align-items: start;
 }
-#introduction figure button {
-  position: relative;
-  left: 50px;
+#introduction figure .photo-btn {
+  display: none;
+  margin-left: 50px;
   top: 10px;
-  display: inline-flex;
   gap: 10px;
   background-color: #FFFEF8;
   width: 84px;
@@ -392,7 +419,7 @@ textarea {
   color: #FFFEF8;
 }
 #portfolio .modify {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   margin-top: 139px;
@@ -496,25 +523,21 @@ footer nav li {
 
 /* Page login */
 .login-page {
-  height: 1024px;
-}
-.login-page header {
+  display: none;
+  height: 600px;
   margin: 50px 150px;
-}
-.login-page .login {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.login-page .login h2 {
+.login-page h2 {
   padding-top: 150px;
   padding-bottom: 60px;
 }
-.login-page .login p {
+.login-page p {
   margin-bottom: 7px;
 }
-.login-page .login .login-email {
+.login-page .login-email {
   height: 51px;
   width: 379px;
   margin-bottom: 52px;
@@ -522,20 +545,20 @@ footer nav li {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-.login-page .login .login-password {
+.login-page .login-password {
   height: 51px;
   width: 379px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-.login-page .login input {
+.login-page input {
   height: 36px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-.login-page .login a {
+.login-page a {
   color: black;
 }
 .login-page footer {

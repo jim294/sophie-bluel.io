@@ -5,33 +5,62 @@ async function getAllWorks() {
     return works;
 };
 
+
 async function loginUser(userData) {
-    try {
-        const response = await fetch("http://localhost:5678/api/users/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userData)
-        });
+    const response = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userData)
+    });
+    
+    const data = await response.json();
+    
+    if (response.ok) {
 
-        const data = await response.json();
+        token = data.token;
+        console.log(token)
+        window.localStorage.setItem("appToken",token)
 
-        if (response.ok) {
-            // Authentification réussie
-            console.log("Connexion réussie :", data);
-            window.location.href = "connect.html";
-            // Rediriger l'utilisateur vers une page appropriée
-        } else {
-            // Authentification échouée
-            // Afficher un message d'erreur à l'utilisateur
-            alert("Erreur dans l’identifiant ou le mot de passe", data);
-            const emailInput = document.querySelector(".login-email");
-            emailInput.value = ""; // Efface l'email saisi
-            emailInput.focus(); // Place le curseur dans le champ de saisie de l'email
-            document.querySelector(".login-password").value = ""; // Efface le mot de passe saisi
-        }
-    } catch (error) {
-        console.error("Erreur :", error);
+        return "userisconnected";
+        // Rediriger l'utilisateur vers une page appropriée
+    } else {
+        return "badcredentials"
     }
 }
+
+
+
+
+async function addPhoto(FormData) {
+    // récupérations des autres éléments constitutifs des options de la requête
+     let storedToken = window.localStorage.getItem("appToken");
+     let bearer = "Bearer " + storedToken;
+     let httpOptions = "";
+
+     if (storedToken !== null) {
+         const headersContent = {
+             "Accept": "*/*",
+             "Authorization": bearer,
+         };
+         const headers = new Headers(headersContent);
+         httpOptions = {
+             method: "POST",
+             headers: headers,
+             body: FormData
+         };
+     }
+     
+         const response = await fetch("http://localhost:5678/api/works", httpOptions);
+         console.log(response.status);
+         
+         if (response.status === 201) {
+             alert('image correctement ajoutée');
+         
+         } else {
+             alert(response.status);
+             throw new Error(response.status);
+         }
+        }
+
