@@ -30,7 +30,35 @@ async function loginUser(userData) {
     }
 }
 
+async function deletePhoto(id) {
+    let storedToken = window.localStorage.getItem("appToken");
+     let bearer = "Bearer " + storedToken;
+     let httpOptions = "";
 
+     if (storedToken !== null) {
+         const headersContent = {
+             "Accept": "*/*",
+             "Authorization": bearer,
+         };
+         const headers = new Headers(headersContent);
+         httpOptions = {
+             method: "DELETE",
+             headers: headers,
+             body: id
+         };
+     }
+     
+         const response = await fetch("http://localhost:5678/api/works/"+id, httpOptions);
+         console.log(response.status);
+         
+         if (response.status === 200) {
+             alert('image correctement retirée');
+         
+         } else {
+             alert(response.status);
+             throw new Error(response.status);
+         }
+}
 
 
 async function addPhoto(FormData) {
@@ -63,4 +91,6 @@ async function addPhoto(FormData) {
              throw new Error(response.status);
          }
         }
+
+
 
