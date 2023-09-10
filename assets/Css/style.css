@@ -166,6 +166,7 @@ textarea {
   gap: 5px;
 }
 .modal-container .tri-photos img {
+  width: 85px;
   height: 100px;
 }
 .modal-container .tri-photos p {

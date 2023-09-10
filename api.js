@@ -1,10 +1,8 @@
 async function getAllWorks() {
-    // Récupération des données provenant du back-end pour les travaux
     const response = await fetch("http://localhost:5678/api/works");
     const works = await response.json();
     return works;
 };
-
 
 async function loginUser(userData) {
     const response = await fetch("http://localhost:5678/api/users/login", {
@@ -18,15 +16,12 @@ async function loginUser(userData) {
     const data = await response.json();
     
     if (response.ok) {
-
         token = data.token;
-        console.log(token)
-        window.localStorage.setItem("appToken",token)
+        console.log(token);
+        window.localStorage.setItem("appToken",token);
 
         return "userisconnected";
         // Rediriger l'utilisateur vers une page appropriée
-    } else {
-        return "badcredentials"
     }
 }
 
@@ -51,18 +46,15 @@ async function deletePhoto(id) {
          const response = await fetch("http://localhost:5678/api/works/"+id, httpOptions);
          console.log(response.status);
          
-         if (response.status === 200) {
+         if (response.status === 204) {
              alert('image correctement retirée');
-         
-         } else {
-             alert(response.status);
-             throw new Error(response.status);
+             document.querySelector(".gallery").innerHTML = "";
+         return response;
          }
 }
 
 
 async function addPhoto(FormData) {
-    // récupérations des autres éléments constitutifs des options de la requête
      let storedToken = window.localStorage.getItem("appToken");
      let bearer = "Bearer " + storedToken;
      let httpOptions = "";
@@ -80,17 +72,7 @@ async function addPhoto(FormData) {
          };
      }
      
-         const response = await fetch("http://localhost:5678/api/works", httpOptions);
+const response = await fetch("http://localhost:5678/api/works", httpOptions);
          console.log(response.status);
-         
-         if (response.status === 201) {
-             alert('image correctement ajoutée');
-         
-         } else {
-             alert(response.status);
-             throw new Error(response.status);
-         }
+         return response;
         }
-
-
-

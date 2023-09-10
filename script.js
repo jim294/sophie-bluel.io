@@ -2,7 +2,6 @@ const elements = await getAllWorks();
 
 async function init(elements) {
     const gallery = document.querySelector(".gallery");
-    const boutonObjet = document.querySelector("Objets_btn")
     const headerElement = document.querySelector("header")
     const divElement = document.createElement("div");
     divElement.classList.add("edition");
@@ -12,18 +11,15 @@ async function init(elements) {
     iconElement.classList.add("fa-solid", "fa-pen-to-square");
     buttonElement.appendChild(iconElement);
     buttonElement.appendChild(document.createTextNode("Mode édition"));
-
     const inputElement = document.createElement("input");
     inputElement.setAttribute("type", "text");
     inputElement.setAttribute("value", "Publier les changements");
     inputElement.setAttribute("name", "changement");
-
-    divElement.appendChild(buttonElement);
-    divElement.appendChild(inputElement);
-
     const titleDiv = document.querySelector(".title");
     headerElement.insertBefore(divElement, titleDiv);
-
+    
+    divElement.appendChild(buttonElement);
+    divElement.appendChild(inputElement);
 
     for (let i = 0; i < elements.length; i++) {
         const listElements = elements[i];
@@ -31,7 +27,6 @@ async function init(elements) {
         imageElement.src = listElements.imageUrl;
         const nomElement= document.createElement("figcaption");
         nomElement.innerText= listElements.title;
-        
         const figure = document.createElement("figure");
         
         gallery.appendChild(figure);
@@ -42,45 +37,13 @@ async function init(elements) {
 
 init(elements);
 
- function connected () {
+/* focus sur l'input "nom" de Contact */
+const contactElement = document.getElementById("contact-btn");
+contactElement.addEventListener("click", async function () {
+    document.getElementById('name').focus();
+});
 
-    const divElement = document.querySelector(".edition");
-    const loginPage = document.querySelector(".login-page")
-    const indexPage = document.querySelector(".index-page")
-    const titleProjet = document.querySelector(".titleProjet")
-    const modify = document.querySelector(".modify")
-    const photoBtn = document.querySelector(".photo-btn")
-    const loginBtn = document.querySelector(".login-btn")
-    const logoutBtn = document.querySelector(".logout-btn")
-    divElement.style.display = "flex";
-    loginPage.style.display = "none";
-    indexPage.style.display = "block";
-    titleProjet.style.display = "none";
-    modify.style.display = "flex";
-    photoBtn.style.display = "inline-flex";
-    loginBtn.style.display = "none";
-    logoutBtn.style.display = "block";
-  
-}
-
-function deconnected () {
-
- // window.location.href = "index.html";
-
-}
-
- function checkconnection(){
-    let connectedToken = window.localStorage.getItem("appToken")
-    console.log(connectedToken);
-
-    if(connectedToken){
-       connected();
-    }
-}
-
-checkconnection();
-
-
+/*                    filtres de la page initiale (non connectée)                      */
 
 const boutonFiltreTous = document.querySelector(".Tous_btn")
 const boutonFiltreObjets = document.querySelector(".Objets_btn")
@@ -99,7 +62,7 @@ boutonFiltreObjets.addEventListener("click", async function() {
     document.querySelector(".gallery").innerHTML = "";
     await init(elementsFiltres)
 })
-
+    
 boutonFiltreAppartements.addEventListener("click", async function() {
     const elementsFiltres = elements.filter(function(element) {
         return element.categoryId == 2;
@@ -116,16 +79,11 @@ boutonFiltreHotels.addEventListener("click", async function() {
     await init(elementsFiltres)
 })
 
-const contactElement = document.getElementById("contact-btn");
-contactElement.addEventListener("click", async ()=>{
-    document.getElementById('name').focus();
-});
-
+/*                      connection/login                   */
 
 /* Partie Log-in */
 
 const logIn = document.querySelector(".login-btn")
-
 
 logIn.addEventListener("click", async function(){
     const loginPage = document.querySelector(".login-page")
@@ -138,10 +96,9 @@ logIn.addEventListener("click", async function(){
     }
 })
 
-
 const loginButton = document.querySelector(".submitConnect");
-loginButton.addEventListener("click", login);
 
+loginButton.addEventListener("click", login);
 
 async function login() {
     const email = document.getElementById("email-login").value;
@@ -165,4 +122,32 @@ async function login() {
     }
 }
 
+ function connected () {
+    const divElement = document.querySelector(".edition");
+    const loginPage = document.querySelector(".login-page")
+    const indexPage = document.querySelector(".index-page")
+    const titleProjet = document.querySelector(".titleProjet")
+    const modify = document.querySelector(".modify")
+    const photoBtn = document.querySelector(".photo-btn")
+    const loginBtn = document.querySelector(".login-btn")
+    const logoutBtn = document.querySelector(".logout-btn")
+    divElement.style.display = "flex";
+    loginPage.style.display = "none";
+    indexPage.style.display = "block";
+    titleProjet.style.display = "none";
+    modify.style.display = "flex";
+    photoBtn.style.display = "inline-flex";
+    loginBtn.style.display = "none";
+    logoutBtn.style.display = "block";
+}
 
+ function checkconnection(){
+    let connectedToken = window.localStorage.getItem("appToken")
+    console.log(connectedToken);
+
+    if(connectedToken){
+       connected();
+    }
+}
+
+checkconnection();
