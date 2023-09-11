@@ -113,6 +113,7 @@ async function login() {
 
     if(connexionState =="userisconnected"){
         connected()
+        window.location.reload();
     }else{
         alert("Erreur dans l’identifiant ou le mot de passe", data);
         const emailInput = document.querySelector(".login-email");
