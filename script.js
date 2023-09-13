@@ -40,7 +40,19 @@ init(elements);
 /* focus sur l'input "nom" de Contact */
 const contactElement = document.getElementById("contact-btn");
 contactElement.addEventListener("click", async function () {
+    const loginPage = document.querySelector(".login-page")
+    const indexPage = document.querySelector(".index-page")
+    loginPage.style.display = "none";
+    indexPage.style.display = "block";
     document.getElementById('name').focus();
+});
+
+const projetElement = document.getElementById("portfolio");
+projetElement.addEventListener("click", async function () {
+    const loginPage = document.querySelector(".login-page")
+    const indexPage = document.querySelector(".index-page")
+    loginPage.style.display = "none";
+    indexPage.style.display = "block";
 });
 
 /*                    filtres de la page initiale (non connectée)                      */
