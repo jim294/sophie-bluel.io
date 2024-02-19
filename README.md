@@ -9,7 +9,7 @@ Mon site est visible sur : [Sophie Bluel by Jim294](https://jim294.github.io/sop
 ## Objectifs
 
 1. Installer l'environnement de développement
-2. Créez la page de présentation des travaux à partir du HTML existant
+2. Créer la page de présentation des travaux à partir du HTML existant
 3. Réalisation du filtre des travaux
 4. Coder la page de connexion
 5. Authentification de l’utilisateur
