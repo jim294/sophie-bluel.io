@@ -1,0 +1,13 @@
+{
+    "name": "projet-6-sophiebluel",
+    "version": "1.0.0",
+    "description": "projet 6 OpenClassroom",
+    "scripts": {
+      "start": "http-server"
+    },
+    "author": "Jm",
+    "license": "ISC",
+    "dependencies": {
+      "http-server": "^14.1.1"
+    }
+  }
