@@ -15,7 +15,7 @@ Mon site est visible sur : [Sophie Bluel by Jim294](https://jim294.github.io/sop
 5. Authentification de l’utilisateur
 6. Ajouter la modale
 7. Suppression des travaux existants
-8. Envoi d’un nouveau projet au back-end via le formulaire de la modale
+8. Envoi d’un nouveau projet au backend via le formulaire de la modale
 9. Traitement de la réponse de l’API pour afficher dynamiquement la nouvelle image de la modale.
 10. Vérifier l’ensemble du projet et s’assurer du traitement des erreurs dans les formulaires
 
